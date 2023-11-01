@@ -10,11 +10,6 @@ yarn install
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
 ### Run your unit tests
 ```
 yarn test:unit
@@ -27,3 +22,8 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### To run Part 2 of Test task
+```
+yarn jest
+```

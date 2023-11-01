@@ -1,30 +1,49 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <MainHeader @openAuth="showAuthModal" @openCart="showCartModal" />
   <router-view />
+  <ModalCart :isOpen="isCartModal" @close="closeCartModal" />
+  <ModalAuth :isOpen="isAuthModal" @close="closeAuthModal" />
+  <MainFooter />
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import MainHeader from "@/components/MainHeader.vue";
+import MainFooter from "@/components/MainFooter.vue";
+import ModalCart from "@/components/ModalCart.vue";
+import ModalAuth from "@/components/ModalAuth.vue";
+
+export default defineComponent({
+  components: {
+    MainHeader,
+    MainFooter,
+    ModalCart,
+    ModalAuth,
+  },
+  data() {
+    return {
+      isCartModal: false,
+      isAuthModal: false,
+    };
+  },
+  methods: {
+    showCartModal() {
+      this.isCartModal = true;
+    },
+    closeCartModal() {
+      this.isCartModal = false;
+    },
+    showAuthModal() {
+      this.isAuthModal = true;
+    },
+    closeAuthModal() {
+      this.isAuthModal = false;
+    },
+  },
+});
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import "./assets/styles/normalize.css";
+@import "./assets/styles/style.css";
 </style>
